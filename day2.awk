@@ -1,7 +1,3 @@
-#!/bin/bash
-
-awk '\
-
 function winner(player1, player2)
 {
       win = 6
@@ -67,16 +63,15 @@ function addOn(type) {
 		return 3
 	}
 }
-BEGIN 	{ print "Lets Go" } \
+BEGIN 	{ print "Lets Go" }
 		{ 
 			round = winner($1, $2) + addOn($2)
 			rigger = rig($1, $2)
 
 			riggedResult = winner($1, rigger) + addOn(rigger)
-		}	\
+		}
 		{
 			sum += round
 			riggedSum += riggedResult
-		} \
-END   	{ printf "part1: %d part2: %d\n", sum, riggedSum } \
-' day2.txt
+		}
+END   	{ printf "part1: %d part2: %d\n", sum, riggedSum }
