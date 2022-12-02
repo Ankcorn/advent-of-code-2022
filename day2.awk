@@ -15,11 +15,7 @@ BEGIN 	{
 			
 
 			if($2 == "X") {
-				if(a == 1) {
-					part2 += 3
-				} else {
-					part2 += (a-1)
-				}
+				part2 += (a + 1) % 3 + 1
 			}
 			if($2 == "Y") {
 				part2 +=3
@@ -27,11 +23,7 @@ BEGIN 	{
 			}
 			if($2 == "Z") {
 				part2 += 6
-				if(a == 3) {
-					part2 += 1
-				} else {
-					part2 += (a+1)
-				}
+				part2 += (a % 3) + 1
 			}
 		}
 END   	{ printf "part1: %d part2: %d\n", part1, part2 }
