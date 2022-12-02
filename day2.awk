@@ -4,15 +4,14 @@ BEGIN 	{
 }{ 
 			a = index("ABC", $1)
 			b = index("XYZ", $2)
-			res = (((b-a)%3) + 3) % 3
+			res = (b-a % 3 + 3) % 3
 			if(res == 1) {
 				part1 += 6 + b
 			} else if(res == 0) {
 				part1 += 3 + b
 			} else {
-				part1 += 0 + b
+				part1 += b
 			}
-			
 
 			if($2 == "X") {
 				part2 += (a + 1) % 3 + 1
