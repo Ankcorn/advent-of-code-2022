@@ -1,77 +1,37 @@
-function winner(player1, player2)
-{
-      win = 6
-	draw = 3
-	loose = 0
+BEGIN 	{ 
+	part1 = 0  
+	part2 = 0 
+}{ 
+			a = index("ABC", $1)
+			b = index("XYZ", $2)
+			res = (((b-a)%3) + 3) % 3
+			if(res == 1) {
+				part1 += 6 + b
+			} else if(res == 0) {
+				part1 += 3 + b
+			} else {
+				part1 += 0 + b
+			}
+			
 
-     if(player1 == "A" && player2 == "X") {
-	  return draw
-     } else if (player1 == "B" && player2 == "Y") {
-	  return draw
-     } else if (player1 == "C" && player2 == "Z") {
-	  return draw
-     } else if (player1 == "A" && player2 == "Y") {
-	  return win 
-	} else if (player1 == "B" && player2 == "Z") {
-	  return win 
-	} else if (player1 == "C" && player2 == "X") {
-	  return win 
-	} else {
-	  return loose
-      }
-}
-
-function rig(player1, result) {
-	 if(player1 == "A" && result == "X") {
-		return "Z"
-	 }
-	 if(player1 == "A" && result == "Y") {
-		return "X"
-	 }
-	 if(player1 == "A" && result == "Z") {
-		return "Y"
-	 }
-
-	 if(player1 == "B" && result == "X") {
-		return "X"
-	 }
-	 if(player1 == "B" && result == "Y") {
-		return "Y"
-	 }
-	 if(player1 == "B" && result == "Z") {
-		return "Z"
-	 }
-
-	 if(player1 == "C" && result == "X") {
-		return "Y"
-	 }
-	 if(player1 == "C" && result == "Y") {
-		return "Z"
-	 }
-	 if(player1 == "C" && result == "Z") {
-		return "X"
-	 }
-}
-function addOn(type) {
-	if(type == "X") { 
-		return 1
-	}
-	if(type == "Y") { 
-		return 2
-	}
-	if(type == "Z") { 
-		return 3
-	}
-}
-BEGIN 	{ print "Lets Go" }
-		{ 
-			round = winner($1, $2) + addOn($2)
-			rigger = rig($1, $2)
-
-			riggedResult = winner($1, rigger) + addOn(rigger)
+			if($2 == "X") {
+				if(a == 3) {
+					part2 += 1
+				} else {
+					part2 += (a+1)
+				}
+			}
+			if($2 == "Y") {
+				part2 +=3
+				part2 += a
+			}
+			if($2 == "Z") {
+				part2 += 6
+				if(a == 1) {
+					part2 += 3
+				} else {
+					part2 += (a-1)
+				}
+			}
 		}
-		{
-			sum += round
-			riggedSum += riggedResult
-		}
-END   	{ printf "part1: %d part2: %d\n", sum, riggedSum }
+END   	{ printf "part1: %d part2: %d\n", part1, part2 }
