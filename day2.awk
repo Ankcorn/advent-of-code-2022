@@ -15,10 +15,10 @@ BEGIN 	{
 			
 
 			if($2 == "X") {
-				if(a == 3) {
-					part2 += 1
+				if(a == 1) {
+					part2 += 3
 				} else {
-					part2 += (a+1)
+					part2 += (a-1)
 				}
 			}
 			if($2 == "Y") {
@@ -27,10 +27,10 @@ BEGIN 	{
 			}
 			if($2 == "Z") {
 				part2 += 6
-				if(a == 1) {
-					part2 += 3
+				if(a == 3) {
+					part2 += 1
 				} else {
-					part2 += (a-1)
+					part2 += (a+1)
 				}
 			}
 		}
