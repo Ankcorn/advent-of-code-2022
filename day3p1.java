@@ -3,10 +3,8 @@ import java.io.FileNotFoundException;  // Import this class to handle errors
 import java.util.Scanner; // Import the Scanner class to read text files
 
 public class day3 {
-
   public static void main(String[] args) {
     try {
-      System.out.println("hello world");
       File myObj = new File("day3.txt");
       Scanner myReader = new Scanner(myObj);
       int total = 0;
