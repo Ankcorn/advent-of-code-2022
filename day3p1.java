@@ -2,6 +2,38 @@ import java.io.File;  // Import the File class
 import java.io.FileNotFoundException;  // Import this class to handle errors
 import java.util.Scanner; // Import the Scanner class to read text files
 
+public class Rucksack {
+  string content;
+  string pocket1;
+  string pocket2;
+  string error;
+
+  constructor (String content) {
+    this.content = content;
+  }
+
+  private split() {
+    String data = myReader.nextLine();
+    int pocketSize = data.length() / 2;
+    pocket1 = data.substring(0, pocketSize);
+    pocket2 = data.substring(pocketSize);
+  }
+
+  private findError() {
+    for(int i = 0; i < items.length; i++) {
+      if(this.pocket1.contains(String.valueOf(items[i]))) {
+        error = items[i];
+        break;
+      }
+    }
+  }
+
+  public prioritise() {
+    this.split();
+    this.findError();
+    
+  }
+}
 public class day3 {
   public static void main(String[] args) {
     try {
