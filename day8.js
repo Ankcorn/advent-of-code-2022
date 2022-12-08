@@ -85,10 +85,8 @@ for (let y in dataset) {
           settings.axis,
           settings.direction,
           { x: Number(x), y: Number(y) })
-          console.log(distance)
           score = score* distance
       }
-      console.log('score',score)
       scores.push(score)
       
     }
